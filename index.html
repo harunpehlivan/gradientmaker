@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/assets/php/"; 
+    include($IPATH."meta.html"); ?>
+    <title>CSS Gradient Maker</title>
+       <!-- Facebook OpenGraph developers.facebook.com/docs/reference/opengraph/ -->
+       <meta property="og:type" content="article" />
+       <meta property="og:title" content="CSS Gradient Maker" />
+       <meta property="og:description" content="Super Simple tool for designing CSS3 color gradients."
+       />
+       <meta property="og:url" content="https://alansimpson.me/html_css/tools/gradientmaker.html" />
+       <meta property="og:image" content="https://alansimpson.me/html_css/tools/gradientmakerog.jpg" />
+   
+       <!-- Twitter domain approval dev.twitter.com/docs/cards/validation/validator -->
+       <!-- For twitter, content is "summary" as shown, or "photo" or "player" (for video) -->
+       <meta name="twitter:card" content="summary">
+       <meta name="twitter:title" content="CSS Gradient Maker">
+       <meta name="twitter:description" content="Super Simple tool for designing CSS3 color gradients.">
+       <meta name="twitter:url" content="https://alansimpson.me/html_css/tools/gradientmaker.html">
+       <meta name="twitter:image" content="ttps://alansimpson.me/html_css/tools/gradientmakerog.jpg">
+       <!-- Shema.org microdata -->
+   
+       <meta itemprop="name" content="CSS Gradient Maker">
+       <meta itemprop="description" content="Super Simple tool for designing CSS3 color gradients.">
+       <meta itemprop="image" content="https://alansimpson.me/html_css/tools/gradientmakerog.jpg">
+    <style>
+        article h1,
+        article h2{
+            font-family: 'Josefin Sans', sans-serif;
+            color:white;
+            text-shadow: 0 0 2px black;
+        }
+        article h2{
+      font-size:1.25em;
+        }
+        #left {
+            display: table-cell;
+            width: 640px;
+            vertical-align: top;
+        }
+
+        #right {
+            display: table-cell;
+            text-align: center;
+            width: 290px;
+        }
+
+        #demo {
+            width: 170px;
+            height: 170px;
+            border: solid 1px gray;
+            margin: 10em auto 0 auto;
+            border-radius: 3px;
+        }
+
+
+        #wrapper h1 {
+            font-size: 16pt;
+        }
+
+        #wrapper h2 {
+            font-size: 14pt;
+            margin: 0;
+            padding: 1em 0 0 0;
+        }
+
+        #directions p {
+            width: 100px;
+            height: 120px;
+            margin: 10px;
+            float: left;
+            text-align: center;
+            cursor: pointer;
+        }
+
+
+        #colorsamples {
+            clear: both;
+        }
+
+        #colorsamples p {
+            width: 40px;
+            height: 40px;
+            float: left;
+            margin: 4px;
+            cursor: pointer;
+        }
+
+        #hexcodes {
+            clear: both;
+            width: 100%;
+        }
+
+        #hexcodes td {
+            padding: 0;
+            vertical-align: middle;
+        }
+
+        #hexcodes input {
+            width: 100px;
+            padding-left: 10px;
+        }
+
+        .lbl {
+            text-align: right;
+            padding-right: 12px;
+        }
+
+        #coderesult {
+            width: 98%;
+            height: 48px;
+            padding: 8px;
+            font-family:monospace;
+            font-size: 14pt;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <?php include($IPATH."headernav.html"); ?>
+    <article>
+
+        <h1>Super Simple CSS Color Gradient</h1>
+
+        <p>CSS 3 offers lots of ways to define color gradients. If you're looking for a simple two-color gradient, this page
+            will create the code for you. Make your choices and then copy/paste code from the Code box below. </p>
+        <h2>Click your Pattern</h2>
+        <div id="left">
+            <div id="directions">
+                <p id="type1" style="background: linear-gradient(to right,#e4efe9,#93a5cf)"></p>
+                <p id="type2" style="background: linear-gradient(#e4efe9,#93a5cf)"></p>
+                <p id="type3" style="background: linear-gradient(135deg,#e4efe9,#93a5cf)"></p>
+                <p id="type4" style="background: radial-gradient(#e4efe9,#93a5cf)"></p>
+                <p id="type5" style="background: linear-gradient(to bottom, #e4efe9 0%, #93a5cf 50%, #e4efe9 100%);"></p>
+            </div>
+            <div id="colorsamples">
+                <h2>Choose a Predefined Color Scheme...</h2>
+                <p id="e4efe9#93a5cf" style="background: linear-gradient(to right, #e4efe9,#93a5cf)"></p>
+                <p id="fad0c4#ff9a9e" style="background: linear-gradient(to right, #fad0c4,#ff9a9e)"></p>
+                <p id="ffecd2#fcb69f" style="background: linear-gradient(to right, #ffecd2,#fcb69f)"></p>
+                <p id="a1c4fd#c2e9fb" style="background: linear-gradient(to right, #a1c4fd,#c2e9fb)"></p>
+                <p id="cfd9df#e2ebf0" style="background: linear-gradient(to right, #cfd9df,#e2ebf0)"></p>
+                <p id="fdfbfb#ebedee" style="background: linear-gradient(to right, #fdfbfb,#ebedee)"></p>
+                <p id="f5f7fa#c3cfe2" style="background: linear-gradient(to right, #f5f7fa,#c3cfe2)"></p>
+                <p id="667eea#764ba2" style="background: linear-gradient(to right, #667eea,#764ba2)"></p>
+                <p id="fdfcfb#e2d1c3" style="background: linear-gradient(to right, #fdfcfb,#e2d1c3)"></p>
+                <p id="89f7fe#66a6ff" style="background: linear-gradient(to right, #89f7fe,#66a6ff)"></p>
+                <p id="48c6ef#6f86d6" style="background: linear-gradient(to right, #48c6ef,#6f86d6)"></p>
+                <p id="feada6#f5efef" style="background: linear-gradient(to right, #feada6,#f5efef)"></p>
+                <p id="13547a#80d0c7" style="background: linear-gradient(to right, #13547a,#80d0c7)"></p>
+                <p id="93a5cf#e4efe9" style="background: linear-gradient(to right, #93a5cf,#e4efe9)"></p>
+                <p id="434343#000000" style="background: linear-gradient(to right, #434343,#000000)"></p>
+                <p id="ff758c#ff7eb3" style="background: linear-gradient(to right, #ff758c,#ff7eb3)"></p>
+                <p id="868f96#596164" style="background: linear-gradient(to right, #868f96,#596164)"></p>
+                <p id="c79081#dfa579" style="background: linear-gradient(to right, #c79081,#dfa579)"></p>
+                <p id="96deda#50c9c3" style="background: linear-gradient(to right, #96deda,#50c9c3)"></p>
+                <p id="29323c#485563" style="background: linear-gradient(to right, #29323c,#485563)"></p>
+                <p id="ee9ca7#ffdde1" style="background: linear-gradient(to right, #ee9ca7,#ffdde1)"></p>
+                <p id="1e3c72#2a5298" style="background: linear-gradient(to right, #1e3c72,#2a5298)"></p>
+                <p id="ffc3a0#ffafbd" style="background: linear-gradient(to right, #ffc3a0,#ffafbd)"></p>
+                <p id="B7F8DB#50A7C2" style="background: linear-gradient(to right, #B7F8DB,#50A7C2)"></p>
+                <p id="FB7197#FBE244" style="background: linear-gradient(to right, #FB7197,#FBE244)"></p>
+                <p id="FE508D#FE196B" style="background: linear-gradient(to right, #FE508D,#FE196B)"></p>
+                <p id="91FF99#1A1A1A" style="background: linear-gradient(to right, #91FF99,#1A1A1A)"></p>
+                <p id="3BD444#059A02" style="background: linear-gradient(to right, #3BD444,#059A02)"></p>
+                <p id="42275a#734b6d" style="background: linear-gradient(to right, #42275a,#734b6d)"></p>
+                <p id="fd746c#2C3E50" style="background: linear-gradient(to right, #fd746c,#2C3E50)"></p>
+                <p id="F2C94C#F2994A" style="background: linear-gradient(to right, #F2C94C,#F2994A)"></p>
+                <p id="ee0979#ff6a00" style="background: linear-gradient(to right, #ee0979,#ff6a00)"></p>
+                <p id="FFC371#FF5F6D" style="background: linear-gradient(to right, #FFC371,#FF5F6D)"></p>
+                <p id="66ff00#a80077" style="background: linear-gradient(to right, #66ff00,#a80077)"></p>
+                <p id="0099F7#F11712" style="background: linear-gradient(to right, #0099F7,#F11712)"></p>
+                <p id="76b852#8DC26F" style="background: linear-gradient(to right, #76b852,#8DC26F)"></p>
+                <p id="00c6ff#0072ff" style="background: linear-gradient(to right, #00c6ff,#0072ff)"></p>
+                <p id="b29f94#603813" style="background: linear-gradient(to right, #b29f94,#603813)"></p>
+                <p id="F9D423#F9D423" style="background: linear-gradient(to right, #F9D423,#F9D423)"></p>
+                <p id="fddb92#d1fdff" style="background: linear-gradient(to right, #fddb92,#d1fdff)"></p>
+                <p id="00467f#a5cc82" style="background: linear-gradient(to right, #00467f, #a5cc82)"></p>
+                <p id="e52d27#b31217" style="background: linear-gradient(to right, #e52d27,#b31217)"></p>
+                <p id="ede574#e1f5c4" style="background: linear-gradient(to right, #ede574,#e1f5c4)"></p>
+                <p id="1f1c2c#928dab" style="background: linear-gradient(to right, #1f1c2c,#928dab)"></p>
+                <p id="314755#26a0da" style="background: linear-gradient(to right, #314755,#26a0da)"></p>
+                <p id="16a085#f4d03f" style="background: linear-gradient(to right, #16a085,#f4d03f)"></p>
+                <p id="aa076b#61045f" style="background: linear-gradient(to right, #aa076b,#61045f)"></p>
+                <p id="ece9e6#ffffff" style="background: linear-gradient(to right, #ece9e6,#ffffff)"></p>
+            </div>
+            <div id="hexcodes">
+
+                <h2 style="margin-top:1em;">...or enter your own color hex codes and click Go</h2>
+
+                <table class="hexcodes">
+                    <tr>
+                        <td class="lbl">Color 1 Hex:&nbsp;</td>
+                        <td>
+                            <input type="text" id="tbcolor1">
+                        </td>
+                        <td style="width:50px;padding:0;text-align:center;font-weight:bold;">
+                            <button class="btn2" onclick="swapem()">&harr;</button>
+                        </td>
+                        <td class="lbl">Color 2 Hex:&nbsp;</td>
+                        <td>
+                            <input type="text" id="tbcolor2">
+                        </td>
+                        <td>
+                            <button onclick="setcolors()">Go</button>
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+        <div id="right">
+            <div id="demo">
+
+            </div>
+
+        </div>
+        Copy the code below to your CSS style rule.
+        <br />
+        <textarea id="coderesult"></textarea>
+        <p style="margin-top:1em;">
+            <sup>*</sup>
+            <a href="https://color.adobe.com/" target="_blank">Adoble Color CCC</a> is a good resource to find colors that don't clash. If you need a more complex gradient
+            with multiple colors and stops, see the links below.
+        </p>
+        <ul class="fal thumbsup">
+            <a href="https://uigradients.com/">
+                <li>uiGradients - Beautiful gradients</li>
+            </a>
+            <a href="https://digitalsynopsis.com/design/beautiful-color-gradients-backgrounds/">
+                <li>30 Beautiful Gradients</li>
+            </a>
+            <a href="http://www.colorzilla.com/gradient-editor/">
+                <li>ColorZilla CSS Gradient Generator</li>
+            </a>
+            <a href="http://www.cssmatic.com/gradient-generator">
+                <li>CSSmatic Gradient Generator</li>
+            </a>
+            <a href="http://angrytools.com/gradient/">
+                <li>Angry Tools Gradient Generator</li>
+            </a>
+            <a href="http://www.cssportal.com/css-gradient-generator/">
+                <li>{CSS} Portal Gradient Generator</li>
+            </a>
+            <a href="http://gradientgenerator.com/">
+                <li>Only Gradient Generator You'll Need</li>
+            </a>
+
+            <a href="https://www.w3schools.com/css/css3_gradients.asp">
+                <li>W3 Schools Gradients</li>
+            </a>
+
+            <a href="https://www.w3.org/TR/2011/WD-css3-images-20110217/#gradients">
+                <li>W3C Technical Docs</li>
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient">
+                <li>Mozilla Development Network</li>
+            </a>
+        </ul>
+        <input type="hidden" id="gtype" />
+        <input type="hidden" id="gdirection" />
+        <input type="hidden" id="gnum" />
+        </div>
+    </article>
+    <?php include($IPATH."footer.html"); ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        // A $( document ).ready() block.
+        $(document).ready(function () {
+
+            //Grab click on directions box
+            $("#directions p").click(function (event) {
+                var passed = $(this).attr('id');
+                passed = passed.replace('type', '');
+                var typ = parseInt(passed);
+
+                var stype = "linear-gradient";
+                var direc = ''
+                switch (typ) {
+                    case 1:
+                        direc = 'to right';
+                        break;
+                    case 2:
+                        direc = '';
+                        break;
+                    case 3:
+                        direc = '135deg';
+                        break;
+                    case 4:
+                        stype = "radial-gradient";
+                        direc = '';
+                        break;
+                    case 5:
+                        direc = "to bottom";
+                        break;
+                }
+                $('#gnum').val(typ);
+                $('#gtype').val(stype);
+                $('#gdirection').val(direc);
+                setcolors()
+            });
+
+            $("#colorsamples p").click(function (event) {
+                var colors = $(this).attr('id');
+                colors = colors.toLowerCase()
+                var colorarray = colors.split('#');
+                $('#tbcolor1').val(colorarray[0]);
+                $('#tbcolor2').val(colorarray[1]);
+                setcolors();
+
+            });
+
+
+            function setdefaults() {
+                $('#tbcolor1').val("e4efe9");
+                $('#tbcolor2').val("93a5cf");
+                $('#gtype').val('linear-gradient');
+                $('#direction').val('');
+                $('#gnum').val(2);
+                setcolors()
+            }
+            setdefaults()
+        }); /* end of document ready */
+
+
+        function setcolors() {
+            var cssstring = $('#gtype').val();
+            cssstring += '(' + $('#gdirection').val();
+            var typ = parseInt($('#gnum').val());
+            //Comma is next unless type is 2.
+            if (typ != 2 && typ != 4) {
+                cssstring += ','
+            }
+            var hex1 = $('#tbcolor1').val();
+            if (hex1.length < 3) {
+                $('#tbcolor1').val("fff");
+                hex1 = "fff"
+            }
+            //Remove any accidental or extra # charts
+            hex1 = hex1.replace(/#+/g, '');
+            hex1 = "#" + hex1.toLowerCase();
+
+            var hex2 = $('#tbcolor2').val();
+            if (hex2.length < 3) {
+                $('#tbcolor2').val("fff");
+                hex2 = "fff"
+            }
+            //Remove any accidental or extra # charts
+            hex2 = hex2.replace(/#+/g, '');
+            hex2 = "#" + hex2.toLowerCase();
+
+            if (typ == 5) {
+                cssstring += hex1 + ' 0%,' + hex2 + ' 50%' + ',' + hex1 + ' 100%)'
+            } else {
+                cssstring += hex1 + ',' + hex2 + ')';
+            }
+            cssstring = cssstring.toLowerCase();
+            $('#demo').css('background', cssstring);
+
+            cssstring += ' fixed'
+            $('#coderesult').text('background: ' + cssstring + ';');            
+            $('body').css('background', cssstring);
+            $('body').css('background-color', hex2);
+
+
+
+        }
+
+        function swapem() {
+            var colo1 = $('#tbcolor1').val();
+            var colo2 = $('#tbcolor2').val();
+            $('#tbcolor1').val(colo2);
+            $('#tbcolor2').val(colo1);
+            setcolors()
+        }
+    </script>
+</body>
+
+</html>
